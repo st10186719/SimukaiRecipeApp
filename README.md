@@ -7,4 +7,4 @@ How to compile and run the software?
   5. Finally you can run the software.
   
  Link to my GitHub repository is below:
- https://github.com/st10186719/SimukaiRecipeApp
+ https://github.com/st10186719/SimukaiRecipeApp.git
