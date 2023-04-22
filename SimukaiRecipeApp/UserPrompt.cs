@@ -120,5 +120,37 @@ namespace SimukaiRecipeApp
             }
 
         }
+
+        //Create a method that is responsible for reseting all the quantity values to the original
+        public void resetQuantities()
+        {
+            int response;
+
+            Console.WriteLine(
+                "\nDo you want to reset your quantity values to the origional?\n" +
+                "(1) Reset Quantity values\n" +
+                "(2) Cancel");
+            response = Convert.ToInt32(Console.ReadLine());
+
+            switch (response)
+            {
+                case 1:
+                    //Replace the values back to their original state.
+                    ingredientQuantity = arr_resetQuantity;
+                    Console.WriteLine("The quantity values have been restored to their original values\n");
+                    break;
+                case 2:
+                    break;
+                default:
+                    Console.WriteLine("Invalid input");
+                    break;
+            }
+            for (int i = 0; i < ingredientQuantity.Length; i++)
+            {
+                Console.WriteLine($"Reset Quantity for {ingredientName[i] + " = " + ingredientQuantity[i]} \n");
+
+            }
+
+        }
     }
 }
