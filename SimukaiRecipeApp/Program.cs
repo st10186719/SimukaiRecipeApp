@@ -20,6 +20,7 @@ namespace SimukaiRecipeApp
             User.DisplayFullRecipe();
             User.ScaleQuantity();
             User.resetQuantities();
+            User.ClearData();
 
             Console.ReadKey();
         }

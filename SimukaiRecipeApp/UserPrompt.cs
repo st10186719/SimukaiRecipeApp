@@ -152,5 +152,28 @@ namespace SimukaiRecipeApp
             }
 
         }
+
+        //create a method that will allow the user to clear all the 
+        public void ClearData()
+        {
+            char response;
+
+            Console.WriteLine("Do you want to enter a new recipe? \nEnter (Y) to proceed or any other key to decline.");
+            response = Convert.ToChar(Console.ReadLine());
+
+            if (response.Equals('Y') || response.Equals('y'))
+            {
+                for (int i = 0; i < ingredientName.Length; i++)
+                {
+                    //Clear all the arrays, using the Array.Clear(Array arr, int index, array length) method.
+                    Array.Clear(ingredientName, 0, ingredientName.Length);
+                    Array.Clear(ingredientQuantity, 0, ingredientQuantity.Length);
+                    Array.Clear(measurement, 0, measurement.Length);
+                    Array.Clear(description, 0, description.Length);
+                }
+                Console.WriteLine("All the recipe details have been successfully cleared!\n");
+
+            }
+        }
     }
 }
