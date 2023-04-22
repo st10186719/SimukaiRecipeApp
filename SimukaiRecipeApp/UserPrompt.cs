@@ -9,6 +9,9 @@ namespace SimukaiRecipeApp
     internal class UserPrompt : Recipe
     {
 
+        int count;//A loop Count variable to keep track of each iteration of a loop. 
+
+
         //Create a method that will capture all the recipe details.
         public void CaptureRecipeDetails()
         {
@@ -23,7 +26,21 @@ namespace SimukaiRecipeApp
             ingredientQuantity = new int[numberOfIngredients];
             measurement = new string[numberOfIngredients];
 
+            //Capture all the ingredient details.
+            for (int i = 0; i < numberOfIngredients; i++)
+            {
 
+                Console.WriteLine($"\nIngredient {count}");
+                Console.Write("Enter the name: ");
+                ingredientName[i] = Console.ReadLine();
+
+                Console.Write("Enter the quantity: ");
+                ingredientQuantity[i] = Convert.ToInt32(Console.ReadLine());
+
+                Console.Write("Enter the unit of measurement: ");
+                measurement[i] = Console.ReadLine();
+                count++;
+            }
         }
     }
 }
