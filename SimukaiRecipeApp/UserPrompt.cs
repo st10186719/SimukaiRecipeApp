@@ -11,6 +11,7 @@ namespace SimukaiRecipeApp
 
         int count;//A loop Count variable to keep track of each iteration of a loop. 
 
+        int[] arr_resetQuantity;
 
         //Create a method that will capture all the recipe details.
         public void CaptureRecipeDetails()
@@ -95,6 +96,28 @@ namespace SimukaiRecipeApp
                 count++;
             }
             Console.WriteLine("_____\n");
+
+        }
+
+        //Create a method that will allow the user to scale the quantities.
+        public void ScaleQuantity()
+        {
+            //Declare variable that will hold the input responsible for manipulating or scaling the quantities by a certain factor.
+            double scale;
+
+            //This array will hold the original values for the quantity array.
+            arr_resetQuantity = ingredientQuantity;
+
+            Console.WriteLine("Enter the factor in which your ingredient quantities are scaled \n" +
+                    "E.g. scaled by a factor of 0.5 (half), 2 (double)\ror 3 (triple): ");
+            scale = Convert.ToDouble(Console.ReadLine());//User input
+
+            //Read through the quantity array, for further manipulation.
+            for (int i = 0; i < ingredientQuantity.Length; i++)
+            {
+                Console.WriteLine($"Scaled quantity for {ingredientName[i] + " = " + ingredientQuantity[i] * scale} \n");
+
+            }
 
         }
     }

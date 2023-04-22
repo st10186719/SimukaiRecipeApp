@@ -18,6 +18,7 @@ namespace SimukaiRecipeApp
             User.CaptureRecipeDetails();
             User.CaptureRecipeSteps();
             User.DisplayFullRecipe();
+            User.ScaleQuantity();
 
 
             Console.ReadKey();
