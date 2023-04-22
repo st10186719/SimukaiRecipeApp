@@ -10,6 +10,7 @@ namespace SimukaiRecipeApp
     {
         static void Main(string[] args)
         {
+
         }
     }
 }
