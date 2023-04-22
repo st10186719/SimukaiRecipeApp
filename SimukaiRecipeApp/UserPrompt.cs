@@ -42,5 +42,28 @@ namespace SimukaiRecipeApp
                 count++;
             }
         }
+
+        //Create a method that will capture all the recipe steps.
+        public void CaptureRecipeSteps()
+        {
+            int numSteps;
+            count = 1;
+
+            Console.Write("\nEnter the number of steps: ");
+            numSteps = Convert.ToInt32(Console.ReadLine());
+
+            description = new string[numSteps];
+
+            //Capture all the descriptions for each step.
+            for (int i = 0; i < numSteps; i++)
+            {
+                Console.WriteLine($"Enter description of step : {count}");
+                description[i] = Console.ReadLine();
+                count++;
+            }
+            Console.WriteLine("_____\n");
+
+
+        }
     }
 }
