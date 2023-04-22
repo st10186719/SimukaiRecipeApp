@@ -16,7 +16,10 @@ namespace SimukaiRecipeApp
                                 "_______________________________\n");
             //Call the captureRecipedetails method
             User.CaptureRecipeDetails();
-            
+            User.CaptureRecipeSteps();
+            User.DisplayFullRecipe();
+
+
             Console.ReadKey();
         }
 

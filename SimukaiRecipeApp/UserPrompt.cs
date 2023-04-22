@@ -65,5 +65,37 @@ namespace SimukaiRecipeApp
 
 
         }
+        //Create a method that will display all the details for the recipe.
+        public void DisplayFullRecipe()
+        {
+            count = 1;
+
+            Console.WriteLine("Details of Recipe [ingredients]\n".ToUpper());
+
+            //Using a for loop, Read through the arrays for the display of all the details.
+            for (int i = 0; i < ingredientName.Length; i++)
+            {
+                Console.WriteLine(
+                    $"INGREDIENT {count}\n" +
+                    $"Name: {ingredientName[i].ToString()} \n" +
+                    $"Quantity: {ingredientQuantity[i].ToString()} \n" +
+                    $"Unit of measurement: {measurement[i].ToString()}\n");
+                count++;
+            }
+            Console.WriteLine("_____\n"); ;
+
+            count = 1;
+            Console.WriteLine(
+                $"Description of each [step]\n".ToUpper());
+
+            //Create a for each loop to capture all the descriptions for each step.
+            foreach (var desc in description)
+            {
+                Console.WriteLine($"Step {count}: {desc}");
+                count++;
+            }
+            Console.WriteLine("_____\n");
+
+        }
     }
 }
