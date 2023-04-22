@@ -10,17 +10,13 @@ namespace SimukaiRecipeApp
     { 
         //Create an object for the UserPrompt external class to have access to the methods.
         static UserPrompt User = new UserPrompt();
+
         public static void Main(string[] args)
         {
             Console.WriteLine(">>Console Recipe Application<<\n" +
                                 "_______________________________\n");
-            //Call the captureRecipedetails method
-            User.CaptureRecipeDetails();
-            User.CaptureRecipeSteps();
-            User.DisplayFullRecipe();
-            User.ScaleQuantity();
-            User.resetQuantities();
-            User.ClearData();
+            //Call the allTasks() method that calls all the necessary methods for this recipe application.
+            User.allTasks();
 
             Console.ReadKey();
         }

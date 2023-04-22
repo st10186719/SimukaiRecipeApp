@@ -13,6 +13,22 @@ namespace SimukaiRecipeApp
 
         int[] arr_resetQuantity;
 
+        //Create a method that will call all the methods
+        public void allTasks()
+        {
+            CaptureRecipeDetails();
+
+            CaptureRecipeSteps();
+
+            DisplayFullRecipe();
+
+            ScaleQuantity();
+
+            resetQuantities();
+
+            ClearData();
+        }
+
         //Create a method that will capture all the recipe details.
         public void CaptureRecipeDetails()
         {
@@ -173,6 +189,7 @@ namespace SimukaiRecipeApp
                 }
                 Console.WriteLine("All the recipe details have been successfully cleared!\n");
 
+                allTasks();//Enter new recipe details
             }
         }
     }
