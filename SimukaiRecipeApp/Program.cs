@@ -13,8 +13,7 @@ namespace SimukaiRecipeApp
 
         public static void Main(string[] args)
         {
-            Console.WriteLine(">>Console Recipe Application<<\n" +
-                                "_______________________________\n");
+            Console.WriteLine("Console Recipe App:\n");
             //Call the allTasks() method that calls all the necessary methods for this recipe application.
             User.allTasks();
 

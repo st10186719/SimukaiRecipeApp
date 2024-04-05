@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,7 +13,7 @@ namespace SimukaiRecipeApp
         Recipe recipeObj = new Recipe();
         int count;//A loop Count variable to keep track of each iteration of a loop.
 
-        int[] arr_resetQuantity;
+        double[] arr_resetQuantity;
 
         //Create a method that will call all the methods
         public void allTasks()
@@ -36,20 +37,26 @@ namespace SimukaiRecipeApp
             int numberOfIngredients;
             count = 1;
 
+            Console.Write("Enter name of Recipe:");
+            recipeObj.recipeName = Console.ReadLine();
+
             //Prompt the user as to how many ingredients are to be entered.
             Console.WriteLine("How many ingredients you want to enter:");
             numberOfIngredients = Convert.ToInt32(Console.ReadLine());
 
             //Initialize the arrays and set a size to each of them
             recipeObj.arr_IngredientName = new string[numberOfIngredients];
-            recipeObj.arr_Quantity = new int[numberOfIngredients];
+            recipeObj.arr_Quantity = new double[numberOfIngredients];
             recipeObj.arr_Measurements = new string[numberOfIngredients];
 
             //Capture all the ingredient details.
             for (int i = 0; i < numberOfIngredients; i++)
             {
+                Console.ForegroundColor = ConsoleColor.DarkGray;
 
-                Console.WriteLine($"\nIngredient {count}");
+                Console.WriteLine($"\nINGREDIENT [{count}]");
+                Console.ForegroundColor = ConsoleColor.White;
+
                 Console.Write("Enter the name: ");
                 recipeObj.arr_IngredientName[i] = Console.ReadLine();
 
@@ -92,32 +99,33 @@ namespace SimukaiRecipeApp
         {
             count = 1;
 
-            Console.WriteLine("Details of Recipe [ingredients]\n".ToUpper());
+            Console.ForegroundColor = ConsoleColor.Green;//Change display text color to green.
+
+            Console.WriteLine(
+                "INGREDIENT INFO\n" +
+                "---------------");
 
             //Using a for loop, Read through the arrays for the display of all the details.
-            for (int i = 0; i < recipeObj.arr_IngredientName.Length ; i++)
+            for (int i = 0; i < recipeObj.arr_IngredientName.Length; i++)
             {
                 Console.WriteLine(
-                    $"INGREDIENT {count}\n"+
-                    $"Name: {recipeObj.arr_IngredientName[i].ToString()} \n" +
-                    $"Quantity: {recipeObj.arr_Quantity[i].ToString()} \n" +
-                    $"Unit of measurement: {recipeObj.arr_Measurements[i].ToString()}\n");
-                count++;
+                $"{i + 1}: " +
+                $"[{recipeObj.arr_Quantity[i]} {recipeObj.arr_Measurements[i]} of {recipeObj.arr_IngredientName[i]}]");
             }
-            Console.WriteLine("_____\n"); ;
 
-            count = 1;
             Console.WriteLine(
-                $"Description of each [step]\n".ToUpper());
-
-            //Create a for each loop to capture all the descriptions for each step.
-            foreach (var desc in recipeObj.arr_Description)
+                $"\nDESCRIPTION OF STEPS\n" +
+                $"--------------------");
+            //Create a for loop to capture all the descriptions for each step.
+            for (int i = 0; i < recipeObj.arr_Description.Length; i++)
             {
-                Console.WriteLine($"Step {count}: {desc}");
-                count++;
+                Console.WriteLine($"{i + 1}: {recipeObj.arr_Description[i]}");
             }
-            Console.WriteLine("_____\n");
-            
+            Console.WriteLine("<End>\n");
+
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.BackgroundColor = ConsoleColor.Black;
+
         }
 
         //Create a method that will allow the user to scale the quantities.
@@ -133,13 +141,16 @@ namespace SimukaiRecipeApp
                     "E.g. scaled by a factor of 0.5 (half), 2 (double)\ror 3 (triple): ");
             scale = Convert.ToDouble(Console.ReadLine());//User input
 
+            Console.ForegroundColor = ConsoleColor.Green;
             //Read through the quantity array, for further manipulation.
             for (int i = 0; i < recipeObj.arr_Quantity.Length; i++)
             {
-                Console.WriteLine($"Scaled quantity for {recipeObj.arr_IngredientName[i] +" = "+ recipeObj.arr_Quantity[i] * scale} \n");
-
+                recipeObj.arr_Quantity[i] *= scale;
             }
-            
+            Console.WriteLine($"SUCCESS! QUANTITIES WERE SCALED BY A FACTOR OF {scale}\n");
+
+            Console.ForegroundColor = ConsoleColor.White;
+
         }
 
         //Create a method that is responsible for reseting all the quantity values to the original
@@ -156,9 +167,18 @@ namespace SimukaiRecipeApp
             switch (response)
             {
                 case 1:
-                    //Replace the values back to their original state.
-                    recipeObj.arr_Quantity = arr_resetQuantity;
-                    Console.WriteLine("The quantity values have been restored to their original values\n");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Are you sure you want to reset quantities? click\n" +
+                    "(1) Reset Quantity values\n" +
+                    "(2) Cancel");
+                    Console.ForegroundColor = ConsoleColor.White;
+
+                    if (response == 1) { 
+                        //Replace the values back to their original state.
+                        recipeObj.arr_Quantity = arr_resetQuantity;
+                        Console.WriteLine("The quantity values have been restored to their original values\n");
+                    }
+
                     break;
                 case 2:
                     break;
