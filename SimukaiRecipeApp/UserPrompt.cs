@@ -123,6 +123,7 @@ namespace SimukaiRecipeApp
             }
             Console.WriteLine("<End>\n");
 
+            //color
             Console.ForegroundColor = ConsoleColor.White;
             Console.BackgroundColor = ConsoleColor.Black;
 
